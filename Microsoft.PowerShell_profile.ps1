@@ -1,3 +1,4 @@
+$env:Home = "\\nyprodfs01\profiles$\kharper"
 $(Get-PSProvider FileSystem).Home = $env:Home
 New-Alias which get-command
 New-Alias np "C:\Program Files (x86)\Notepad++\notepad++.exe"
