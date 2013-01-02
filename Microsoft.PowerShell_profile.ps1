@@ -37,8 +37,16 @@ function prompt {
     
     $green = [ConsoleColor]::Green
     $cyan = [ConsoleColor]::Cyan
+    $hostName = [Net.Dns]::GetHostName()
 
-    Write-Host ("[" + ([Net.Dns]::GetHostName()) + "] ") -n -f $green
+    # If we're in a remote session, overwrite the generated prompt
+    if ($PSSenderInfo) {
+        $promptLength = $hostName.Length + 4
+        (("`b" * $promptLength) + (" " * $promptLength) + ("`b" * $promptLength) + "$ ")
+    }
+
+    # Write the hostname and a shortened version of the current path
+    Write-Host ("[" + $hostName + "] ") -n -f $green
     Write-Host ("<" + (Shorten-Path (pwd).Path) + ">") -n -f $cyan
 
     if ($provider -eq "FileSystem") {
@@ -46,6 +54,7 @@ function prompt {
 
         $global:LASTEXITCODE = $realLASTEXITCODE
     }
+
     return "$ "
 }
 
