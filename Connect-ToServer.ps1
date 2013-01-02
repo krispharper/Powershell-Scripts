@@ -13,4 +13,6 @@ param (
     [string] $Server
 )
 
-Enter-PSSession -ComputerName $Server -Credential $(Get-Credential) -Authentication Credssp
+$session = New-PSSession -ComputerName $Server -Credential $(Get-Credential) -Authentication Credssp
+Invoke-Command -Session $session -ScriptBlock { . $args[0] } -ArgumentList $profile
+Enter-PSSession $session
