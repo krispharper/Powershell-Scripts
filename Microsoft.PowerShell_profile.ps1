@@ -7,6 +7,7 @@ New-Alias gvim "C:\Program Files (x86)\Vim\vim73\gvim.exe"
 New-Alias tf "C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\tf.exe"
 New-Alias paint "C:\Windows\System32\mspaint.exe"
 New-Alias putty "C:\Program Files (x86)\Putty\putty.exe"
+New-Alias python "C:\Program Files (x86)\IronPython 2.7.1\ipy.exe"
 
 Remove-Item alias:cd
 Set-Alias cd '\\nyprodfs01\profiles$\kharper\My Documents\WindowsPowerShell\cd.ps1'
