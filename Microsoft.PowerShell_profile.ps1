@@ -9,8 +9,12 @@ New-Alias paint "C:\Windows\System32\mspaint.exe"
 New-Alias putty "C:\Program Files (x86)\Putty\putty.exe"
 New-Alias python "C:\Program Files (x86)\IronPython 2.7.1\ipy.exe"
 
+New-Alias alert Display-Alert
+New-Alias cal Write-Calendar
+New-Alias rename Rename-Items
+
 Remove-Item alias:cd
-Set-Alias cd '\\nyprodfs01\profiles$\kharper\My Documents\WindowsPowerShell\cd.ps1'
+Set-Alias cd Change-Directory
 
 # Set up prompt including the posh-git module
 Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
