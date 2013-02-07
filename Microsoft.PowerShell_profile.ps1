@@ -1,6 +1,8 @@
 $env:Home = "\\nyprodfs01\profiles$\kharper"
 $(Get-PSProvider FileSystem).Home = $env:Home
-New-Alias which get-command
+$env:Path += ";\\nyprodfs01\profiles$\kharper\My Documents\WindowsPowerShell"
+
+New-Alias which Get-Command
 New-Alias np "C:\Program Files (x86)\Notepad++\notepad++.exe"
 New-Alias vim "C:\Program Files (x86)\Vim\vim73\vim.exe"
 New-Alias gvim "C:\Program Files (x86)\Vim\vim73\gvim.exe"
