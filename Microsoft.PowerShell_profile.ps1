@@ -2,18 +2,18 @@ $env:Home = "\\nyprodfs01\profiles$\kharper"
 $(Get-PSProvider FileSystem).Home = $env:Home
 $env:Path += ";\\nyprodfs01\profiles$\kharper\My Documents\WindowsPowerShell"
 
-New-Alias which Get-Command
-New-Alias np "C:\Program Files (x86)\Notepad++\notepad++.exe"
-New-Alias vim "C:\Program Files (x86)\Vim\vim73\vim.exe"
-New-Alias gvim "C:\Program Files (x86)\Vim\vim73\gvim.exe"
-New-Alias tf "C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\tf.exe"
-New-Alias paint "C:\Windows\System32\mspaint.exe"
-New-Alias putty "C:\Program Files (x86)\Putty\putty.exe"
-New-Alias python "C:\Program Files (x86)\IronPython 2.7.1\ipy.exe"
+Set-Alias which Get-Command
+Set-Alias np "C:\Program Files (x86)\Notepad++\notepad++.exe"
+Set-Alias vim "C:\Program Files (x86)\Vim\vim73\vim.exe"
+Set-Alias gvim "C:\Program Files (x86)\Vim\vim73\gvim.exe"
+Set-Alias tf "C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\IDE\tf.exe"
+Set-Alias paint "C:\Windows\System32\mspaint.exe"
+Set-Alias putty "C:\Program Files (x86)\Putty\putty.exe"
+Set-Alias python "C:\Program Files (x86)\IronPython 2.7.1\ipy.exe"
 
-New-Alias alert Display-Alert
-New-Alias cal Write-Calendar
-New-Alias rename Rename-Items
+Set-Alias alert Display-Alert
+Set-Alias cal Write-Calendar
+Set-Alias rename Rename-Items
 
 Remove-Item alias:cd
 Set-Alias cd Change-Directory
