@@ -12,7 +12,7 @@ if (!$env:home) {
 
 # Map '~' to $env:home and add my scripts to the PATH
 $(Get-PSProvider FileSystem).Home = $env:Home
-$env:Path += ";" + $env:home + "My Documents\WindowsPowerShell"
+$env:Path += ";" + (Join-Path -Path $env:home -ChildPath "My Documents\WindowsPowerShell")
 
 # Set up some common command aliases
 Set-Alias which Get-Command
