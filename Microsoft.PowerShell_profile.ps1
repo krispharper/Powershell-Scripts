@@ -1,7 +1,20 @@
-$env:Home = "\\nyprodfs01\profiles$\kharper"
-$(Get-PSProvider FileSystem).Home = $env:Home
-$env:Path += ";\\nyprodfs01\profiles$\kharper\My Documents\WindowsPowerShell"
+if (!$env:home) {
+    # Annaly profile location
+    $profilePath = "\\nyprodfs01\profiles$\kharper"
 
+    if (Test-Path $profilePath) {
+        $env:home = $profilePath
+    }
+    else {
+        $env:home = $env:homedrive + $env:homepath
+    }
+}
+
+# Map '~' to $env:home and add my scripts to the PATH
+$(Get-PSProvider FileSystem).Home = $env:Home
+$env:Path += ";" + $env:home + "My Documents\WindowsPowerShell"
+
+# Set up some common command aliases
 Set-Alias which Get-Command
 Set-Alias np "C:\Program Files (x86)\Notepad++\notepad++.exe"
 Set-Alias vim "C:\Program Files (x86)\Vim\vim73\vim.exe"
@@ -35,6 +48,7 @@ function Shorten-Path([string] $path) {
 function prompt {
     $provider = (pwd).Provider.Name
 
+    # Only try to load posh-git functionality in filesystem providers
     if ($provider -eq "FileSystem") {
         $realLASTEXITCODE = $LASTEXITCODE
 
