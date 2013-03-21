@@ -11,6 +11,9 @@ If specified, will output an entire year.
 .PARAMETER ShowHolidays
 If specified, holidays for the year and month are shown.
 
+.PARAMETER ObservedHolidays
+If specified with the ShowHolidays flag, observed holidays will be shown instead of the actual dates.
+
 .PARAMETER $DateColors
 A [ConsoleColor] array of two elements specifying the foreground color and background color for each day printed
 
@@ -50,6 +53,7 @@ param (
     [int] $Month = (Get-Date).Month,
     [int] $Year = (Get-Date).Year,
     [switch] $ShowHolidays,
+    [switch] $ObservedHolidays,
     [ConsoleColor[]] $DateColors = @([ConsoleColor]::White, [Console]::BackgroundColor),
     [ConsoleColor[]] $TodayColors = @([ConsoleColor]::Red, [Console]::BackgroundColor),
     [ConsoleColor[]] $HolidayColors = @([ConsoleColor]::White, [ConsoleColor]::DarkCyan)
@@ -195,7 +199,7 @@ function Print-Year ($year) {
 }
 
 function Get-Holidays ($year) {
-    return @(
+    $holidays = @(
         Get-Date -Year $year -Month 1 -Day 1 # New Year's Day
         Find-WeekDayMultiple $year 1 "Monday" 3 # MLK Day
         Find-WeekDayMultiple $year 2 "Monday" 3 # President's Day
@@ -208,6 +212,13 @@ function Get-Holidays ($year) {
         Find-WeekDayMultiple $year 11 "Thursday" 4 # Thanksgiving
         Get-Date -Year $year -Month 12 -Day 25 # Christmas
     ) |% {$_.Date}
+
+    if ($ObservedHolidays.IsPresent) {
+        return $holidays |% {Find-ObservedHoliday $_}
+    }
+    else {
+        return $holidays
+    }
 }
 
 function Find-WeekDayMultiple ($year, $month, $dayOfWeek, $multiple) {
@@ -261,6 +272,18 @@ function Find-GoodFriday ($year) {
     $month = [Math]::Floor(($h + $L - 7 * $m + 114) / 31)
     $day = (($h + $L - 7 * $m + 114) % 31) + 1
     return (Get-Date -Year $year -Month $month -Day $day).AddDays(-2)
+}
+
+function Find-ObservedHoliday ($holiday) {
+    if ($holiday.DayOfWeek -eq "Saturday") {
+        return $holiday.AddDays(-1)
+    }
+    elseif ($holiday.DayOfWeek -eq "Sunday") {
+        return $holiday.AddDays(1)
+    }
+    else {
+        return $holiday
+    }
 }
 
 if ($month -ne 0) {
