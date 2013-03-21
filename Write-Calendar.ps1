@@ -8,6 +8,18 @@ If specified, will limit output to a single month with this numeral value.
 .PARAMETER Year
 If specified, will output an entire year.
 
+.PARAMETER ShowHolidays
+If specified, holidays for the year and month are shown.
+
+.PARAMETER $DateColors
+A [ConsoleColor] array of two elements specifying the foreground color and background color for each day printed
+
+.PARAMETER $TodayColors
+A [ConsoleColor] array of two elements specifying the foreground color and background color for today's date
+
+.PARAMETER $HolidayColors
+A [ConsoleColor] array of two elements specifying the foreground color and background color for holidays printed
+
 .NOTES
 This script has some functionality which many would consider weird or inconsistent. Specifically, if a month is specifed and a year is not, then the output is typically the calendar for the input month and the current year. However, if the specified month is greater than 12, then it's treated as a year and the whole year is outputted.
 
@@ -33,9 +45,14 @@ Outputs the calendar for April, 2011.
 Write-Calendar 7
 Outputs the calendar for September of this year.
 #>
+
 param (
     [int] $Month = (Get-Date).Month,
-    [int] $Year = (Get-Date).Year
+    [int] $Year = (Get-Date).Year,
+    [switch] $ShowHolidays,
+    [ConsoleColor[]] $DateColors = @([ConsoleColor]::White, [Console]::BackgroundColor),
+    [ConsoleColor[]] $TodayColors = @([ConsoleColor]::Red, [Console]::BackgroundColor),
+    [ConsoleColor[]] $HolidayColors = @([ConsoleColor]::White, [ConsoleColor]::DarkCyan)
 )
 
 Set-Variable -name daysLine -option Constant -value "Su Mo Tu We Th Fr Sa "
@@ -56,6 +73,12 @@ elseif (($month -gt 12) -and ($year -ne (Get-Date).Year)) {
     throw "Month parameter must be between 1 and 12"
 }
 
+foreach ($array in @($DateColors, $TodayColors, $HolidayColors)) {
+    if ($array.Length -lt 2) {
+        throw "Must specify both foreground and background colors for color parameters"
+    }
+}
+
 function Print-Month ($month, $year) {
     $firstDayOfMonth = Get-Date -month $month -day 1 -year $year
     $lastDayOfMonth = (Get-Date -month $firstDayOfMonth.AddMonths(1).Month -day 1 -year $firstDayOfMonth.AddMonths(1).Year).AddDays(-1)
@@ -66,17 +89,26 @@ function Print-Month ($month, $year) {
     Write-Host $daysLine
     
     for ($day = $firstDayOfMonth; $day -le $lastDayOfMonth; $day = $day.AddDays(1)) {
-        $color = "white"
+        $ForegroundColor = $DateColors[0]
+        $BackgroundColor = $DateColors[1]
         
         if ($day.date -eq (get-date).date) {
-            $color = "red"
+            $ForegroundColor = $TodayColors[0]
+            $BackgroundColor = $TodayColors[1]
+        }
+        elseif ($ShowHolidays.IsPresent) {
+            if ((Get-Holidays $year).Contains($day.Date)) {
+                $ForegroundColor = $HolidayColors[0]
+                $BackgroundColor = $HolidayColors[1]
+            }
         }
         
         if ($day.day -eq 1) {
             Write-Host (" " * 3 * [int](Get-Date $day -uformat %u)) -NoNewLine
         }
         
-        Write-Host ((Get-Date $day -Format dd).ToString() + " ") -NoNewLine -ForegroundColor $color
+        Write-Host ((Get-Date $day -Format dd).ToString()) -NoNewLine -ForegroundColor $ForegroundColor -BackgroundColor $BackgroundColor
+        Write-Host " " -NoNewLine
         
         if ($day.DayOfWeek -eq "Saturday") {
             Write-Host
@@ -91,6 +123,10 @@ function Print-Month ($month, $year) {
 }
 
 function Print-Year ($year) {
+    if ($ShowHolidays.IsPresent) {
+        $holidays = Get-Holidays $year
+    }
+
     Write-Host
     
     for($month = 1; $month -le 12; $month += 3) {
@@ -115,18 +151,29 @@ function Print-Year ($year) {
             $dayOfMonth = $dayCounts[$i]
             $dayCounts[$i]++
             $dayOffset = [int](Get-Date -day 1 -month ($month + $i) -year $year -uformat %u)
-            $color = "white"
+            $ForegroundColor = $DateColors[0]
+            $BackgroundColor = $DateColors[1]
             
             if ($dayOfMonth -eq 1) {
                 Write-Host (" " * 3 * $dayOffSet) -NoNewLine
             }
                 
             if ($dayOfMonth -le (Get-Date -day 1 -month ((($i + $month) % 12) + 1) -year $year).AddDays(-1).day) {
-                if ((Get-Date -day $dayOfMonth -month ((($i + $month - 1) % 12) + 1) -year $year).date -eq (Get-Date).date) {
-                    $color = "red"
+                $currentDay = (Get-Date -day $dayOfMonth -month ((($i + $month - 1) % 12) + 1) -year $year)
+
+                if ($currentDay.date -eq (Get-Date).date) {
+                    $ForegroundColor = $TodayColors[0]
+                    $BackgroundColor = $TodayColors[1]
+                }
+                elseif ($ShowHolidays.IsPresent) {
+                    if ($holidays.Contains($currentDay.Date)) {
+                        $ForegroundColor = $HolidayColors[0]
+                        $BackgroundColor = $HolidayColors[1]
+                    }
                 }
                 
-                Write-Host ((Get-Date -month ($i + $month) -day $dayOfMonth -year $year -Format dd).ToString() + " ") -NoNewLine -ForeGroundcolor $color
+                Write-Host ((Get-Date -month ($i + $month) -day $dayOfMonth -year $year -Format dd).ToString()) -NoNewLine -ForegroundColor $ForegroundColor -BackgroundColor $BackgroundColor
+                Write-Host " " -NoNewLine
             }
             else {
                 Write-Host "   " -NoNewLine
@@ -145,6 +192,75 @@ function Print-Year ($year) {
         Write-Host
         $dayCounts = (1, 1, 1)
     }
+}
+
+function Get-Holidays ($year) {
+    return @(
+        Get-Date -Year $year -Month 1 -Day 1 # New Year's Day
+        Find-WeekDayMultiple $year 1 "Monday" 3 # MLK Day
+        Find-WeekDayMultiple $year 2 "Monday" 3 # President's Day
+        Find-GoodFriday $year # Good Friday
+        Find-LastWeekDay $year 5 "Monday" # Memorial Day
+        Get-Date -Year $year -Month 7 -Day 4 # Fourth of July
+        Find-WeekDayMultiple $year 9 "Monday" 1 # Labor Day
+        Find-WeekDayMultiple $year 10 "Monday" 2 # Columbus Day
+        Get-Date -Year $year -Month 11 -Day 11 # Veterans Day
+        Find-WeekDayMultiple $year 11 "Thursday" 4 # Thanksgiving
+        Get-Date -Year $year -Month 12 -Day 25 # Christmas
+    ) |% {$_.Date}
+}
+
+function Find-WeekDayMultiple ($year, $month, $dayOfWeek, $multiple) {
+    $result = Get-Date -Year $year -Month $month -Day 1
+    $multipleCount = 0
+
+    do {
+        if ($result.DayOfWeek -eq $dayOfWeek) {
+            $multipleCount++
+        }
+
+        $result = $result.AddDays(1)
+
+        if ($result.Month -ne $month) {
+            throw "Could not find weekday multiple."
+        }
+    }
+    while ($multipleCount -lt $multiple)
+
+    return $result.AddDays(-1)
+}
+
+function Find-LastWeekDay ($year, $month, $dayOfWeek) {
+    $result = $dayCounter = Get-Date -Year $year -Month $month -Day 1
+
+    while ($dayCounter.Month -eq $month) {
+        if ($dayCounter.DayOfWeek -eq $dayOfWeek) {
+            $result = $dayCounter
+        }
+
+        $dayCounter = $dayCounter.AddDays(1)
+    }
+
+    return $result
+}
+
+function Find-GoodFriday ($year) {
+    # Taken from http://en.wikipedia.org/wiki/Computus#Anonymous_Gregorian_algorithm
+    $a = $year % 19
+    $b = [Math]::Floor($year / 100)
+    $c = $year % 100
+    $d = [Math]::Floor($b / 4)
+    $e = $b % 4
+    $f = [Math]::Floor(($b + 8) / 25)
+    $g = [Math]::Floor(($b - $f + 1) / 3)
+    $h = (19 * $a + $b - $d - $g + 15) % 30
+    $i = [Math]::Floor($c / 4)
+    $k = $c % 4
+    $L = (32 + 2 * $e + 2 * $i - $h - $k) % 7
+    $m = [Math]::Floor(($a + 11 * $h + 22 * $L) / 451)
+    $month = [Math]::Floor(($h + $L - 7 * $m + 114) / 31)
+    $day = (($h + $L - 7 * $m + 114) % 31) + 1
+    return (Get-Date -Year $year -Month $month -Day $day).AddDays(-2)
 }
 
 if ($month -ne 0) {
