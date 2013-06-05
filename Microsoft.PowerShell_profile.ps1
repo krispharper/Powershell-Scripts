@@ -32,7 +32,9 @@ Remove-Item alias:cd
 Set-Alias cd Change-Directory
 
 # Include TFS PowerTools commands
-Add-PSSnapin Microsoft.TeamFoundation.PowerShell
+if (-not (Get-PSSnapin Microsoft.TeamFoundation.PowerShell)) {
+    Add-PSSnapin Microsoft.TeamFoundation.PowerShell
+}
 
 # Set up prompt including the posh-git module
 Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
