@@ -15,27 +15,33 @@ param (
     [switch] $showAllSessions
 )
 
-$report = @()
+begin {
+    $report = @()
+}
+process {
 
-foreach ($server in $servers) {
-    $sessions = query session /server:$server
+    foreach ($server in $servers) {
+        $sessions = query session /server:$server
 
-    foreach ($i in 1..($sessions.count -1)) {
-        $temp = "" | Select-Object Server, SessionName, Username, Id, State, Type, Device
-        $temp.Server = $server
-        $temp.SessionName = $sessions[$i].Substring(1,18).Trim()
-        $temp.Username = $sessions[$i].Substring(19,20).Trim()
-        $temp.Id = $sessions[$i].Substring(39,9).Trim()
-        $temp.State = $sessions[$i].Substring(48,8).Trim()
-        $temp.Type = $sessions[$i].Substring(56,12).Trim()
-        $temp.Device = $sessions[$i].Substring(68).Trim()
-        $report += $temp
+        foreach ($i in 1..($sessions.count -1)) {
+            $temp = "" | Select-Object Server, SessionName, Username, Id, State, Type, Device
+            $temp.Server = $server
+            $temp.SessionName = $sessions[$i].Substring(1,18).Trim()
+            $temp.Username = $sessions[$i].Substring(19,20).Trim()
+            $temp.Id = $sessions[$i].Substring(39,9).Trim()
+            $temp.State = $sessions[$i].Substring(48,8).Trim()
+            $temp.Type = $sessions[$i].Substring(56,12).Trim()
+            $temp.Device = $sessions[$i].Substring(68).Trim()
+            $report += $temp
+        }
     }
 }
 
-if ($showAllSessions.IsPresent) {
-    $report
-}
-else {
-    $report |? {$_.Username}
+end {
+    if ($showAllSessions.IsPresent) {
+        $report
+    }
+    else {
+        $report |? {$_.Username}
+    }
 }
