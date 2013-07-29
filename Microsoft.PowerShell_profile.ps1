@@ -34,6 +34,12 @@ Set-Alias cd Change-Directory
 # Include TFS PowerTools commands
 Add-PSSnapin Microsoft.TeamFoundation.PowerShell -ErrorAction SilentlyContinue
 
+# Set up a shortcut to list all active sessions on remote servers I use
+function Show-ActiveSessions {
+    $serversXml = [xml](cat '\\nyprodfs01\profiles$\kharper\My Documents\Main Group.rdg')
+    $serversXml.rdcman.file.group[1].server.name | Get-LoggedInUsers | Select-Object Server, Username, State | Sort-Object -Property State
+}
+
 # Set up prompt including the posh-git module
 Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
 Import-Module posh-git
