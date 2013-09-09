@@ -17,7 +17,7 @@ param (
 $emailAddress = ([adsisearcher]"(samaccountname=$env:USERNAME)").FindOne().Properties.mail
 $namespace = "Microsoft.Exchange.WebServices.Data.{0}"
 
-[Reflection.Assembly]::LoadFile("C:\Program Files\Microsoft\Exchange\Web Services\1.2\Microsoft.Exchange.WebServices.dll") | Out-Null
+[Reflection.Assembly]::LoadFile("C:\Program Files (x86)\Microsoft\Exchange\Web Services\2.0\Microsoft.Exchange.WebServices.dll") | Out-Null
 $service = New-Object ($namespace -f "ExchangeService")([Microsoft.Exchange.WebServices.Data.ExchangeVersion]::Exchange2007_SP1)
 $service.AutodiscoverUrl($emailAddress)
 $inbox = [Microsoft.Exchange.WebServices.Data.Folder]::Bind($service,[Microsoft.Exchange.WebServices.Data.WellKnownFolderName]::Inbox)
