@@ -17,8 +17,8 @@ $env:Path += ";" + (Join-Path -Path $env:home -ChildPath "My Documents\WindowsPo
 # Set up some common command aliases
 Set-Alias which Get-Command
 Set-Alias np "C:\Program Files (x86)\Notepad++\notepad++.exe"
-Set-Alias vim "C:\Program Files (x86)\Vim\vim73\vim.exe"
-Set-Alias gvim "C:\Program Files (x86)\Vim\vim73\gvim.exe"
+Set-Alias vim "C:\Program Files (x86)\Vim\vim74\vim.exe"
+Set-Alias gvim "C:\Program Files (x86)\Vim\vim74\gvim.exe"
 Set-Alias tf "C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\IDE\tf.exe"
 Set-Alias paint "C:\Windows\System32\mspaint.exe"
 Set-Alias putty "C:\Program Files (x86)\Putty\putty.exe"
