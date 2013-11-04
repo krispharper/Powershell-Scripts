@@ -22,11 +22,12 @@ Set-Alias gvim "C:\Program Files (x86)\Vim\vim74\gvim.exe"
 Set-Alias tf "C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\IDE\tf.exe"
 Set-Alias paint "C:\Windows\System32\mspaint.exe"
 Set-Alias putty "C:\Program Files (x86)\Putty\putty.exe"
-Set-Alias python "C:\Program Files (x86)\IronPython 2.7\ipy.exe"
 
 Set-Alias alert Display-Alert
 Set-Alias cal Write-Calendar
 Set-Alias rename Rename-Items
+Set-Alias Get-App cinst
+Set-Alias Remove-App cuninst
 
 Remove-Item alias:cd
 Set-Alias cd Change-Directory
@@ -41,8 +42,8 @@ function Show-ActiveSessions {
 }
 
 # Set up prompt including the posh-git module
-Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
-Import-Module posh-git
+#Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
+#Import-Module posh-git
 
 function Shorten-Path([string] $path) {
    $loc = $path.Replace($env:home, '~')
@@ -62,7 +63,7 @@ function prompt {
         $realLASTEXITCODE = $LASTEXITCODE
 
         # Reset color, which can be messed up by Enable-GitColors
-        $Host.UI.RawUI.ForegroundColor = $GitPromptSettings.DefaultForegroundColor
+        #$Host.UI.RawUI.ForegroundColor = $GitPromptSettings.DefaultForegroundColor
     }
     
     $green = [ConsoleColor]::Green
@@ -80,7 +81,7 @@ function prompt {
     Write-Host ("<" + (Shorten-Path (pwd).Path) + ">") -n -f $cyan
 
     if ($provider -eq "FileSystem") {
-        Write-VcsStatus
+        #Write-VcsStatus
 
         $global:LASTEXITCODE = $realLASTEXITCODE
     }
@@ -88,6 +89,6 @@ function prompt {
     return "$ "
 }
 
-Enable-GitColors
+#Enable-GitColors
 
 Pop-Location
