@@ -1,7 +1,9 @@
 $rootDirs = (
     "\\pc-kharper\c$\Users\kharper\AppData\Roaming\Microsoft\Windows\Start Menu\",
-    "\\pc-kharper\c$\Users\kharper\\Desktop\",
+    "\\pc-kharper\c$\Users\kharper\Desktop\",
     "\\pc-kharper\c$\Users\Public\\Desktop\",
+    "\\pc-kharper2\c$\Users\kharper\Desktop\",
+    "\\pc-kharper2\c$\Users\Public\\Desktop\",
     "\\pc-devbberg\c$\Users\kharper\Desktop\",
     "\\pc-devbberg\c$\Users\Public\Desktop\"
 )
