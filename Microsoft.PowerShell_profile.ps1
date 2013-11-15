@@ -21,7 +21,6 @@ Set-Alias vim "C:\Program Files (x86)\Vim\vim74\vim.exe"
 Set-Alias gvim "C:\Program Files (x86)\Vim\vim74\gvim.exe"
 Set-Alias tf "C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\IDE\tf.exe"
 Set-Alias paint "C:\Windows\System32\mspaint.exe"
-Set-Alias putty "C:\Program Files (x86)\Putty\putty.exe"
 
 Set-Alias alert Display-Alert
 Set-Alias cal Write-Calendar
