@@ -13,7 +13,8 @@ $annalyShortcuts = (
     "XBasis 1.1.2.9 QA.lnk",
     "XBasis Clone.lnk",
     "XBasis Redux.lnk",
-    "HostExplorer.lnk"
+    "HostExplorer.lnk",
+    "Dashboard.lnk"
 )
 
 $rcapShortcuts = (
