@@ -1,20 +1,23 @@
+$machineNames = (
+    "\\pc-kharper\",
+    "\\pc-kharper2\",
+    "\\pc-devbberg\"
+)
+
 $rootDirs = (
-    "\\pc-kharper\c$\Users\kharper\AppData\Roaming\Microsoft\Windows\Start Menu\",
-    "\\pc-kharper\c$\Users\kharper\Desktop\",
-    "\\pc-kharper\c$\Users\Public\\Desktop\",
-    "\\pc-kharper2\c$\Users\kharper\Desktop\",
-    "\\pc-kharper2\c$\Users\Public\\Desktop\",
-    "\\pc-devbberg\c$\Users\kharper\Desktop\",
-    "\\pc-devbberg\c$\Users\Public\Desktop\"
+    "c$\Users\kharper\Desktop\",
+    "c$\Users\Public\Desktop\",
+    "c$\Users\kharper\AppData\Roaming\Microsoft\Windows\Start Menu\",
+    "c$\Users\kharper\AppData\Roaming\Microsoft\Windows\Start Menu\Programs"
 )
 
 $annalyShortcuts = (
     "XBasis QA.lnk",
-    "XBasis 1.1.2.9 QA.lnk",
     "XBasis Clone.lnk",
     "XBasis Redux.lnk",
     "HostExplorer.lnk",
-    "Dashboard.lnk"
+    "Dashboard.lnk",
+    "FRx (GP2010).lnk"
 )
 
 $rcapShortcuts = (
@@ -22,33 +25,30 @@ $rcapShortcuts = (
     "PnL.lnk"
 )
 
+function Delete-Shortcuts ($shortcuts, $destDirName, $rootDirs, $machineNames) {
+    $startMenuPath = "c$\Users\kharper\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\"
 
-function Delete-Shortcuts ($shortcuts, $dirName, $rootDirs) {
-    $startMenuPath = $rootDirs[0]
+    foreach ($machineName in $machineNames) {
+        $destDir = (Join-Path ($machineName + $startMenuPath) $destDirName)
 
-    if (!(Test-Path ($startMenuPath + "Programs\$dirName"))) {
-        mkdir ($startMenuPath + "Programs\$dirName")
-    }
+        if (!(Test-Path $destDir)) {
+            mkdir $destDir
+        }
 
-    foreach ($dir in $rootDirs) {
-        foreach ($shortcut in $shortcuts) {
-            $path = $dir + $shortcut
+        foreach ($dirName in $rootDirs) {
+            $dir = ($machineName + $dirName)
 
-            if (Test-Path ($startMenuPath + $shortcut)) {
-                if (Test-Path ($startMenuPath + "Programs\$dirName\" + $shortcut)) {
-                    rm ($startMenuPath + $shortcut)
+            foreach ($shortcut in $shortcuts) {
+                $path = (Join-Path $dir $shortcut)
+
+                if (Test-Path $path) {
+                    "Moving $path to $destDir"
+                    mv -Force $path $destDir
                 }
-                else {
-                    mv ($startMenuPath + $shortcut) ($startMenuPath + "Programs\$dirName\")
-                }
-            }
-
-            if (Test-Path $path) {
-                rm $path
             }
         }
     }
 }
 
-Delete-Shortcuts $annalyShortcuts "Annaly" $rootDirs
-Delete-Shortcuts $rcapShortcuts "RCap Securities" $rootDirs
+Delete-Shortcuts $annalyShortcuts "Annaly" $rootDirs $machineNames
+Delete-Shortcuts $rcapShortcuts "RCap Securities" $rootDirs $machineNames
