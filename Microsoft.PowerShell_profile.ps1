@@ -25,6 +25,7 @@ Set-Alias paint "C:\Windows\System32\mspaint.exe"
 Set-Alias alert Display-Alert
 Set-Alias cal Write-Calendar
 Set-Alias rename Rename-Items
+Set-Alias colors Write-ColorScheme
 Set-Alias Get-App cinst
 Set-Alias Remove-App cuninst
 
