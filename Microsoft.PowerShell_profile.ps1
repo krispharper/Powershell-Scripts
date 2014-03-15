@@ -68,6 +68,8 @@ function prompt {
     
     $green = [ConsoleColor]::Green
     $cyan = [ConsoleColor]::Cyan
+    $darkCyan = [ConsoleColor]::DarkCyan
+    $white = [ConsoleColor]::White
     $hostName = [Net.Dns]::GetHostName()
 
     # If we're in a remote session, overwrite the generated prompt
@@ -77,8 +79,11 @@ function prompt {
     }
 
     # Write the hostname and a shortened version of the current path
-    Write-Host ("[" + $hostName + "] ") -n -f $green
-    Write-Host ("<" + (Shorten-Path (pwd).Path) + ">") -n -f $cyan
+    $path = (Shorten-Path (pwd).Path) -replace "\\", " $([char]0xE0B1) "
+    Write-Host " $hostName " -n -f $white -b $green
+    Write-Host "$([char]0xE0B0) " -n -f $green -b $darkCyan
+    Write-Host $path -n -f $white -b $darkCyan
+    Write-Host $([char]0xE0B0) -n -f $darkCyan
 
     if ($provider -eq "FileSystem") {
         #Write-VcsStatus
@@ -86,7 +91,7 @@ function prompt {
         $global:LASTEXITCODE = $realLASTEXITCODE
     }
 
-    return "$ "
+    return " "
 }
 
 #Enable-GitColors
