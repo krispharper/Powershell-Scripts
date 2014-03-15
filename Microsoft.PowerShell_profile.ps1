@@ -79,7 +79,8 @@ function prompt {
     }
 
     # Write the hostname and a shortened version of the current path
-    $path = (Shorten-Path (pwd).Path) -replace "\\", " $([char]0xE0B1) "
+    $path = (Shorten-Path (pwd).Path) -replace "\\$"
+    $path = $path -replace "\\", " $([char]0xE0B1) "
     Write-Host " $hostName " -n -f $white -b $green
     Write-Host "$([char]0xE0B0) " -n -f $green -b $darkCyan
     Write-Host $path -n -f $white -b $darkCyan
