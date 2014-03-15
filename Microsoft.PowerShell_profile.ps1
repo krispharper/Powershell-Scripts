@@ -42,8 +42,8 @@ function Show-ActiveSessions {
 }
 
 # Set up prompt including the posh-git module
-#Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
-#Import-Module posh-git
+Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
+Import-Module posh-git
 
 function Shorten-Path([string] $path) {
    $loc = $path.Replace($env:home, '~')
@@ -87,7 +87,7 @@ function prompt {
     Write-Host $([char]0xE0B0) -n -f $darkCyan
 
     if ($provider -eq "FileSystem") {
-        #Write-VcsStatus
+        Write-VcsStatus
 
         $global:LASTEXITCODE = $realLASTEXITCODE
     }
