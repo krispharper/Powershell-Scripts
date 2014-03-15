@@ -75,7 +75,7 @@ function prompt {
     # If we're in a remote session, overwrite the generated prompt
     if ($PSSenderInfo) {
         $promptLength = $hostName.Length + 4
-        (("`b" * $promptLength) + (" " * $promptLength) + ("`b" * $promptLength) + "$ ")
+        (("`b" * $promptLength) + (" " * $promptLength) + ("`b" * $promptLength) + " ")
     }
 
     # Write the hostname and a shortened version of the current path
