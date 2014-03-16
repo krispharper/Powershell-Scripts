@@ -83,7 +83,7 @@ function prompt {
     $path = $path -replace "\\", " $([char]0xE0B1) "
     Write-Host " $hostName " -n -f $white -b $green
     Write-Host "$([char]0xE0B0) " -n -f $green -b $darkCyan
-    Write-Host $path -n -f $white -b $darkCyan
+    Write-Host "$path " -n -f $white -b $darkCyan
     Write-Host $([char]0xE0B0) -n -f $darkCyan
 
     if ($provider -eq "FileSystem") {
@@ -91,6 +91,8 @@ function prompt {
 
         $global:LASTEXITCODE = $realLASTEXITCODE
     }
+
+    & '~/My Documents/Development/Posh-TFS/bin/Debug/Write-Status.ps1'
 
     return " "
 }
