@@ -92,7 +92,9 @@ function prompt {
         $global:LASTEXITCODE = $realLASTEXITCODE
     }
 
-    & '~/My Documents/Development/Posh-TFS/bin/Debug/Write-Status.ps1'
+    if (-not $PSSenderInfo) {
+        & '~/My Documents/Development/Posh-TFS/bin/Debug/Write-Status.ps1'
+    }
 
     return " "
 }
