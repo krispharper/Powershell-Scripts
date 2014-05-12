@@ -17,7 +17,8 @@ $annalyShortcuts = (
     "XBasis Redux.lnk",
     "HostExplorer.lnk",
     "Dashboard.lnk",
-    "FRx (GP2010).lnk"
+    "FRx (GP2010).lnk",
+    "PolyPaths 64.lnk"
 )
 
 $rcapShortcuts = (
