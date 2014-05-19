@@ -28,6 +28,7 @@ Set-Alias rename Rename-Items
 Set-Alias colors Write-ColorScheme
 Set-Alias Get-App cinst
 Set-Alias Remove-App cuninst
+Set-Alias Update-App cup
 
 Remove-Item alias:cd
 Set-Alias cd Change-Directory
