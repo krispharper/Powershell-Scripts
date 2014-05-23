@@ -18,6 +18,7 @@ $annalyShortcuts = (
     "HostExplorer.lnk",
     "Dashboard.lnk",
     "FRx (GP2010).lnk",
+    "PolyPaths.lnk",
     "PolyPaths 64.lnk",
     "ACAT QA.lnk"
 )
