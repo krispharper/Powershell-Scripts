@@ -20,6 +20,7 @@ $annalyShortcuts = (
     "FRx (GP2010).lnk",
     "PolyPaths.lnk",
     "PolyPaths 64.lnk",
+    "ACAT.lnk",
     "ACAT QA.lnk"
 )
 
