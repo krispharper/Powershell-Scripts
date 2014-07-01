@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <key name="Software">
 	<key name="ConEmu">
-		<key name=".Vanilla" modified="2014-03-15 10:45:28" build="140310">
+		<key name=".Vanilla" modified="2014-07-01 13:41:07" build="140523">
 			<value name="ColorTable00" type="dword" data="003f3f3f"/>
 			<value name="ColorTable01" type="dword" data="00af6464"/>
 			<value name="ColorTable02" type="dword" data="00008000"/>
@@ -98,7 +98,7 @@
 			<value name="Multi.SplitHeight" type="hex" data="04"/>
 			<value name="KeyboardHooks" type="hex" data="01"/>
 			<value name="FontName" type="string" data="Sauce Code Powerline"/>
-			<value name="FontName2" type="string" data="Consolas"/>
+			<value name="FontName2" type="string" data="Sauce Code Powerline"/>
 			<value name="FontAutoSize" type="hex" data="00"/>
 			<value name="FontSize" type="dword" data="0000000f"/>
 			<value name="FontSizeX" type="dword" data="00000000"/>
@@ -115,18 +115,18 @@
 			<value name="bgImageColors" type="dword" data="ffffffff"/>
 			<value name="bgOperation" type="hex" data="00"/>
 			<value name="bgPluginAllowed" type="hex" data="01"/>
-			<value name="AlphaValue" type="hex" data="fa"/>
+			<value name="AlphaValue" type="hex" data="f0"/>
 			<value name="AlphaValueSeparate" type="hex" data="01"/>
-			<value name="AlphaValueInactive" type="hex" data="de"/>
+			<value name="AlphaValueInactive" type="hex" data="df"/>
 			<value name="UserScreenTransparent" type="hex" data="00"/>
 			<value name="ColorKeyTransparent" type="hex" data="00"/>
 			<value name="ColorKeyValue" type="dword" data="00010101"/>
 			<value name="UseCurrentSizePos" type="hex" data="01"/>
 			<value name="WindowMode" type="dword" data="0000051f"/>
-			<value name="ConWnd Width" type="dword" data="00000082"/>
-			<value name="ConWnd Height" type="dword" data="00000042"/>
+			<value name="ConWnd Width" type="dword" data="00000085"/>
+			<value name="ConWnd Height" type="dword" data="0000004a"/>
 			<value name="Cascaded" type="hex" data="01"/>
-			<value name="ConWnd X" type="dword" data="0000003e"/>
+			<value name="ConWnd X" type="dword" data="00000046"/>
 			<value name="ConWnd Y" type="dword" data="00000000"/>
 			<value name="16bit Height" type="dword" data="00000000"/>
 			<value name="AutoSaveSizePos" type="hex" data="01"/>
@@ -135,7 +135,7 @@
 			<value name="HideCaption" type="hex" data="00"/>
 			<value name="HideChildCaption" type="hex" data="01"/>
 			<value name="FocusInChildWindows" type="hex" data="01"/>
-			<value name="HideCaptionAlways" type="hex" data="00"/>
+			<value name="HideCaptionAlways" type="hex" data="01"/>
 			<value name="HideCaptionAlwaysFrame" type="hex" data="00"/>
 			<value name="HideCaptionAlwaysDelay" type="dword" data="000007d0"/>
 			<value name="HideCaptionAlwaysDisappear" type="dword" data="000007d0"/>
@@ -351,8 +351,8 @@
 			<value name="Multi.NewConsoleShift" type="dword" data="80808000"/>
 			<value name="Multi.NewConsolePopup" type="dword" data="80808000"/>
 			<value name="Multi.NewWindow" type="dword" data="00000000"/>
-			<value name="Multi.NewSplitV" type="dword" data="0010114f"/>
-			<value name="Multi.NewSplitH" type="dword" data="00101145"/>
+			<value name="Multi.NewSplitV" type="dword" data="005b11de"/>
+			<value name="Multi.NewSplitH" type="dword" data="5b1011de"/>
 			<value name="Multi.NewAttach" type="dword" data="80808000"/>
 			<value name="Multi.Next" type="dword" data="80808000"/>
 			<value name="Multi.NextShift" type="dword" data="80808000"/>
@@ -385,8 +385,8 @@
 			<value name="AlwaysOnTopKey" type="dword" data="00000000"/>
 			<value name="Key.TabMenu" type="dword" data="80808000"/>
 			<value name="Key.TabMenu2" type="dword" data="00001002"/>
-			<value name="Key.TabPane1" type="dword" data="00005d09"/>
-			<value name="Key.TabPane2" type="dword" data="00105d09"/>
+			<value name="Key.TabPane1" type="dword" data="005b114e"/>
+			<value name="Key.TabPane2" type="dword" data="5b10114e"/>
 			<value name="Key.Maximize" type="dword" data="80808000"/>
 			<value name="Key.FullScreen" type="dword" data="8080807a"/>
 			<value name="Key.SysMenu" type="dword" data="00001220"/>
@@ -477,9 +477,9 @@
 			<value name="DndLKey" type="hex" data="00"/>
 			<value name="DndRKey" type="hex" data="a2"/>
 			<value name="WndDragKey" type="dword" data="00121101"/>
-				<key name="Tasks" modified="2014-03-15 10:45:29" build="140310">
+				<key name="Tasks" modified="2014-07-01 13:41:07" build="140523">
 				<value name="Count" type="dword" data="00000005"/>
-						<key name="Task1" modified="2014-03-15 10:45:29" build="140310">
+						<key name="Task1" modified="2014-07-01 13:41:07" build="140523">
 					<value name="Name" type="string" data="{Powershell}"/>
 					<value name="GuiArgs" type="string" data="/icon &quot;powershell.exe&quot; /dir &quot;C:\&quot;"/>
 					<value name="Cmd1" type="string" data="&gt;C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"/>
@@ -487,7 +487,7 @@
 					<value name="Count" type="dword" data="00000001"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 				</key>
-						<key name="Task2" modified="2014-03-15 10:45:29" build="140310">
+						<key name="Task2" modified="2014-07-01 13:41:07" build="140523">
 					<value name="Name" type="string" data="{Visual Studio CMD}"/>
 					<value name="GuiArgs" type="string" data="/icon &quot;cmd.exe&quot; /dir &quot;C:\&quot;"/>
 					<value name="Cmd1" type="string" data="%comspec% /k &quot;&quot;c:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\vcvarsall.bat&quot;&quot; x86"/>
@@ -495,7 +495,7 @@
 					<value name="Count" type="dword" data="00000001"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 				</key>
-						<key name="Task3" modified="2014-03-15 10:45:29" build="140310">
+						<key name="Task3" modified="2014-07-01 13:41:07" build="140523">
 					<value name="Name" type="string" data="{SSH}"/>
 					<value name="GuiArgs" type="string" data=""/>
 					<value name="Cmd1" type="string" data="&quot;C:\Program Files (x86)\Google\Chrome\Application\chrome.exe&quot; --profile-directory=Default --app-id=pnhechapfaindjhompbnflcldabbghjo"/>
@@ -503,7 +503,7 @@
 					<value name="Count" type="dword" data="00000001"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 				</key>
-						<key name="Task4" modified="2014-03-15 10:45:29" build="140310">
+						<key name="Task4" modified="2014-07-01 13:41:07" build="140523">
 					<value name="Name" type="string" data="{Python}"/>
 					<value name="GuiArgs" type="string" data="/icon &quot;\\nyprodfs01\profiles$\kharper\My Documents\Console Icons\python.ico&quot;"/>
 					<value name="Cmd1" type="string" data="&quot;C:\Program Files (x86)\IronPython 2.7\ipy.exe&quot;"/>
@@ -511,7 +511,7 @@
 					<value name="Count" type="dword" data="00000001"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 				</key>
-						<key name="Task5" modified="2014-03-15 10:45:29" build="140310">
+						<key name="Task5" modified="2014-07-01 13:41:07" build="140523">
 					<value name="Name" type="string" data="{CMD}"/>
 					<value name="GuiArgs" type="string" data="/icon &quot;cmd.exe&quot; /dir &quot;C:\&quot;"/>
 					<value name="Cmd1" type="string" data="C:\Windows\System32\cmd.exe"/>
@@ -528,9 +528,9 @@
 					<value name="Hotkey" type="dword" data="00000000"/>
 				</key>
 			</key>
-				<key name="Apps" modified="2014-03-15 10:45:29" build="140310">
+				<key name="Apps" modified="2014-07-01 13:41:07" build="140523">
 				<value name="Count" type="dword" data="00000001"/>
-						<key name="App1" modified="2014-03-15 10:45:29" build="140310">
+						<key name="App1" modified="2014-07-01 13:41:07" build="140523">
 					<value name="AppNames" type="string" data="powershell.exe"/>
 					<value name="Elevated" type="hex" data="00"/>
 					<value name="OverridePalette" type="hex" data="00"/>
@@ -555,8 +555,8 @@
 					<value name="ClipboardDeleteLeftWord" type="hex" data="02"/>
 				</key>
 			</key>
-				<key name="Colors" modified="2014-03-15 10:45:29" build="140310">
-			<key name="Palette1" modified="2014-03-15 10:45:29" build="140310">
+				<key name="Colors" modified="2014-07-01 13:41:07" build="140523">
+			<key name="Palette1" modified="2014-07-01 13:41:07" build="140523">
 					<value name="Name" type="string" data="Powershell"/>
 					<value name="ExtendColors" type="hex" data="00"/>
 					<value name="ExtendColorIdx" type="hex" data="0e"/>
@@ -611,14 +611,14 @@
 			<value name="OneTabPerGroup" type="hex" data="00"/>
 			<value name="ActivateSplitMouseOver" type="hex" data="00"/>
 			<value name="TabBtnDblClick" type="dword" data="00000000"/>
-			<value name="Multi.SplitSizeVU" type="dword" data="00105d26"/>
-			<value name="Multi.SplitSizeVD" type="dword" data="00105d28"/>
-			<value name="Multi.SplitSizeHL" type="dword" data="00105d25"/>
-			<value name="Multi.SplitSizeHR" type="dword" data="00105d27"/>
-			<value name="Multi.SplitFocusU" type="dword" data="00005d26"/>
-			<value name="Multi.SplitFocusD" type="dword" data="00005d28"/>
-			<value name="Multi.SplitFocusL" type="dword" data="00005d25"/>
-			<value name="Multi.SplitFocusR" type="dword" data="00005d27"/>
+			<value name="Multi.SplitSizeVU" type="dword" data="5b10114b"/>
+			<value name="Multi.SplitSizeVD" type="dword" data="5b10114a"/>
+			<value name="Multi.SplitSizeHL" type="dword" data="5b101148"/>
+			<value name="Multi.SplitSizeHR" type="dword" data="5b10114c"/>
+			<value name="Multi.SplitFocusU" type="dword" data="005b114b"/>
+			<value name="Multi.SplitFocusD" type="dword" data="005b114a"/>
+			<value name="Multi.SplitFocusL" type="dword" data="005b1148"/>
+			<value name="Multi.SplitFocusR" type="dword" data="005b114c"/>
 			<value name="Multi.NewConsolePopup2" type="dword" data="00000000"/>
 			<value name="CloseGroupPrcKey" type="dword" data="00000000"/>
 			<value name="CloseAllConKey" type="dword" data="00000000"/>
@@ -642,6 +642,9 @@
 			<value name="CTS.IntelligentExceptions" type="string" data="far|vim.exe"/>
 			<value name="StatusBar.Hide.Time" type="hex" data="01"/>
 			<value name="TaskbarProgress" type="hex" data="01"/>
+			<value name="AnsiLog" type="hex" data="00"/>
+			<value name="AnsiLogPath" type="string" data="%ConEmuDir%\Logs\"/>
+			<value name="RetardInactivePanes" type="hex" data="00"/>
 		</key>
 	</key>
 </key>
