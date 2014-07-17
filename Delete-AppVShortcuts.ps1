@@ -14,6 +14,7 @@ $rootDirs = (
 $annalyShortcuts = (
     "XBasis QA.lnk",
     "XBasis Clone.lnk",
+    "XBasis Clone02.lnk",
     "XBasis Redux.lnk",
     "HostExplorer.lnk",
     "Dashboard.lnk",
