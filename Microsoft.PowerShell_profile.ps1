@@ -36,6 +36,9 @@ Set-Alias cd Change-Directory
 # Include TFS PowerTools commands
 Add-PSSnapin Microsoft.TeamFoundation.PowerShell -ErrorAction SilentlyContinue
 
+# Add PSReadLine module
+Import-Module PSReadLine
+
 # Set up a shortcut to list all active sessions on remote servers I use
 function Show-ActiveSessions {
     $serversXml = [xml](cat '\\nyprodfs01\profiles$\kharper\My Documents\Main Group.rdg')
