@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <key name="Software">
 	<key name="ConEmu">
-		<key name=".Vanilla" modified="2014-07-15 17:08:19" build="140707">
+		<key name=".Vanilla" modified="2014-10-14 14:35:43" build="140707">
 			<value name="ColorTable00" type="dword" data="003f3f3f"/>
 			<value name="ColorTable01" type="dword" data="00af6464"/>
 			<value name="ColorTable02" type="dword" data="00008000"/>
@@ -123,11 +123,11 @@
 			<value name="ColorKeyValue" type="dword" data="00010101"/>
 			<value name="UseCurrentSizePos" type="hex" data="01"/>
 			<value name="WindowMode" type="dword" data="0000051f"/>
-			<value name="ConWnd Width" type="dword" data="00000087"/>
-			<value name="ConWnd Height" type="dword" data="00000047"/>
+			<value name="ConWnd Width" type="dword" data="00000085"/>
+			<value name="ConWnd Height" type="dword" data="00000049"/>
 			<value name="Cascaded" type="hex" data="01"/>
-			<value name="ConWnd X" type="dword" data="00000044"/>
-			<value name="ConWnd Y" type="dword" data="00000000"/>
+			<value name="ConWnd X" type="dword" data="00000042"/>
+			<value name="ConWnd Y" type="dword" data="00000004"/>
 			<value name="16bit Height" type="dword" data="00000000"/>
 			<value name="AutoSaveSizePos" type="hex" data="01"/>
 			<value name="QuakeStyle" type="hex" data="00"/>
@@ -326,7 +326,7 @@
 			<value name="Update.CheckOnStartup" type="hex" data="01"/>
 			<value name="Update.CheckHourly" type="hex" data="00"/>
 			<value name="Update.ConfirmDownload" type="hex" data="01"/>
-			<value name="Update.UseBuilds" type="hex" data="02"/>
+			<value name="Update.UseBuilds" type="hex" data="01"/>
 			<value name="Update.UseProxy" type="hex" data="00"/>
 			<value name="Update.Proxy" type="string" data=""/>
 			<value name="Update.ProxyUser" type="string" data=""/>
@@ -477,9 +477,9 @@
 			<value name="DndLKey" type="hex" data="00"/>
 			<value name="DndRKey" type="hex" data="a2"/>
 			<value name="WndDragKey" type="dword" data="00121101"/>
-				<key name="Tasks" modified="2014-07-01 13:41:07" build="140523">
+				<key name="Tasks" modified="2014-09-22 14:27:06" build="140707">
 				<value name="Count" type="dword" data="00000005"/>
-						<key name="Task1" modified="2014-07-01 13:41:07" build="140523">
+						<key name="Task1" modified="2014-09-22 14:27:06" build="140707">
 					<value name="Name" type="string" data="{Powershell}"/>
 					<value name="GuiArgs" type="string" data="/icon &quot;powershell.exe&quot; /dir &quot;C:\&quot;"/>
 					<value name="Cmd1" type="string" data="&gt;C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"/>
@@ -487,7 +487,7 @@
 					<value name="Count" type="dword" data="00000001"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 				</key>
-						<key name="Task2" modified="2014-07-01 13:41:07" build="140523">
+						<key name="Task2" modified="2014-09-22 14:27:06" build="140707">
 					<value name="Name" type="string" data="{Visual Studio CMD}"/>
 					<value name="GuiArgs" type="string" data="/icon &quot;cmd.exe&quot; /dir &quot;C:\&quot;"/>
 					<value name="Cmd1" type="string" data="%comspec% /k &quot;&quot;c:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\vcvarsall.bat&quot;&quot; x86"/>
@@ -495,7 +495,7 @@
 					<value name="Count" type="dword" data="00000001"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 				</key>
-						<key name="Task3" modified="2014-07-01 13:41:07" build="140523">
+						<key name="Task3" modified="2014-09-22 14:27:06" build="140707">
 					<value name="Name" type="string" data="{SSH}"/>
 					<value name="GuiArgs" type="string" data=""/>
 					<value name="Cmd1" type="string" data="&quot;C:\Program Files (x86)\Google\Chrome\Application\chrome.exe&quot; --profile-directory=Default --app-id=pnhechapfaindjhompbnflcldabbghjo"/>
@@ -503,7 +503,7 @@
 					<value name="Count" type="dword" data="00000001"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 				</key>
-						<key name="Task4" modified="2014-07-01 13:41:07" build="140523">
+						<key name="Task4" modified="2014-09-22 14:27:06" build="140707">
 					<value name="Name" type="string" data="{Python}"/>
 					<value name="GuiArgs" type="string" data="/icon &quot;\\nyprodfs01\profiles$\kharper\My Documents\Console Icons\python.ico&quot;"/>
 					<value name="Cmd1" type="string" data="&quot;C:\Program Files (x86)\IronPython 2.7\ipy.exe&quot;"/>
@@ -511,7 +511,7 @@
 					<value name="Count" type="dword" data="00000001"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 				</key>
-						<key name="Task5" modified="2014-07-01 13:41:07" build="140523">
+						<key name="Task5" modified="2014-09-22 14:27:06" build="140707">
 					<value name="Name" type="string" data="{CMD}"/>
 					<value name="GuiArgs" type="string" data="/icon &quot;cmd.exe&quot; /dir &quot;C:\&quot;"/>
 					<value name="Cmd1" type="string" data="C:\Windows\System32\cmd.exe"/>
@@ -528,9 +528,9 @@
 					<value name="Hotkey" type="dword" data="00000000"/>
 				</key>
 			</key>
-				<key name="Apps" modified="2014-07-01 13:41:07" build="140523">
+				<key name="Apps" modified="2014-09-22 14:27:06" build="140707">
 				<value name="Count" type="dword" data="00000001"/>
-						<key name="App1" modified="2014-07-01 13:41:07" build="140523">
+						<key name="App1" modified="2014-09-22 14:27:06" build="140707">
 					<value name="AppNames" type="string" data="powershell.exe"/>
 					<value name="Elevated" type="hex" data="00"/>
 					<value name="OverridePalette" type="hex" data="00"/>
@@ -555,8 +555,8 @@
 					<value name="ClipboardDeleteLeftWord" type="hex" data="02"/>
 				</key>
 			</key>
-				<key name="Colors" modified="2014-07-01 13:41:07" build="140523">
-			<key name="Palette1" modified="2014-07-01 13:41:07" build="140523">
+				<key name="Colors" modified="2014-09-22 14:27:06" build="140707">
+			<key name="Palette1" modified="2014-09-22 14:27:06" build="140707">
 					<value name="Name" type="string" data="Powershell"/>
 					<value name="ExtendColors" type="hex" data="00"/>
 					<value name="ExtendColorIdx" type="hex" data="0e"/>
@@ -645,6 +645,9 @@
 			<value name="AnsiLog" type="hex" data="00"/>
 			<value name="AnsiLogPath" type="string" data="%ConEmuDir%\Logs\"/>
 			<value name="RetardInactivePanes" type="hex" data="00"/>
+			<value name="DefaultTerminalAgressive" type="hex" data="01"/>
+			<value name="Multi.DupConfirm" type="hex" data="01"/>
+			<value name="Multi.DetachConfirm" type="hex" data="01"/>
 		</key>
 	</key>
 </key>
