@@ -38,6 +38,7 @@ Add-PSSnapin Microsoft.TeamFoundation.PowerShell -ErrorAction SilentlyContinue
 
 # Add PSReadLine module
 Import-Module PSReadLine
+Set-PSReadlineOption -TokenKind String -ForegroundColor Cyan
 
 # Set up a shortcut to list all active sessions on remote servers I use
 function Show-ActiveSessions {
@@ -97,7 +98,7 @@ function prompt {
     }
 
     if (-not $PSSenderInfo) {
-        & '~/My Documents/Development/Posh-TFS/bin/Debug/Write-Status.ps1'
+        & '~/My Documents/Development/Posh-TFS/bin/Release/Write-Status.ps1'
     }
 
     return " "
