@@ -1,7 +1,4 @@
 if (!$env:home) {
-    # Annaly profile location
-    $profilePath = "\\nyprodfs01\profiles$\kharper"
-
     if (Test-Path $profilePath) {
         $env:home = $profilePath
     }
@@ -32,9 +29,6 @@ Set-Alias Update-App cup
 
 Remove-Item alias:cd
 Set-Alias cd Change-Directory
-
-# Include TFS PowerTools commands
-Add-PSSnapin Microsoft.TeamFoundation.PowerShell -ErrorAction SilentlyContinue
 
 # Add PSReadLine module
 Import-Module PSReadLine
@@ -95,10 +89,6 @@ function prompt {
         Write-VcsStatus
 
         $global:LASTEXITCODE = $realLASTEXITCODE
-    }
-
-    if (-not $PSSenderInfo) {
-        & '~/My Documents/Development/Posh-TFS/bin/Release/Write-Status.ps1'
     }
 
     return " "
