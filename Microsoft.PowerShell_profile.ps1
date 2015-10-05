@@ -26,6 +26,7 @@ Set-Alias colors Write-ColorScheme
 Set-Alias Get-App cinst
 Set-Alias Remove-App cuninst
 Set-Alias Update-App cup
+Set-Alias sudo Run-ElevatedCommand
 
 Remove-Item alias:cd
 Set-Alias cd Change-Directory
@@ -69,6 +70,7 @@ function prompt {
     $cyan = [ConsoleColor]::Cyan
     $darkCyan = [ConsoleColor]::DarkCyan
     $white = [ConsoleColor]::White
+    $darkGray = [ConsoleColor]::DarkGray
     $hostName = [Net.Dns]::GetHostName()
 
     # If we're in a remote session, overwrite the generated prompt
@@ -77,11 +79,13 @@ function prompt {
         (("`b" * $promptLength) + (" " * $promptLength) + ("`b" * $promptLength) + " ")
     }
 
-    # Write the hostname and a shortened version of the current path
+    # Write the hostname, time, and a shortened version of the current path
     $path = (Shorten-Path (pwd).Path) -replace "\\$"
     $path = $path -replace "\\", " $([char]0xE0B1) "
     Write-Host " $hostName " -n -f $white -b $green
-    Write-Host "$([char]0xE0B0) " -n -f $green -b $darkCyan
+    Write-Host "$([char]0xE0B0) " -n -f $green -b $darkGray
+    Write-Host (Get-Date).ToString("HH:mm:ss ") -n -f $white -b $darkGray
+    Write-Host "$([char]0xE0B0) " -n -f $darkGray -b $darkCyan
     Write-Host "$path " -n -f $white -b $darkCyan
     Write-Host $([char]0xE0B0) -n -f $darkCyan
 
