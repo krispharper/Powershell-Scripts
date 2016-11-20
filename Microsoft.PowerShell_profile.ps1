@@ -35,6 +35,11 @@ Set-Alias cd Change-Directory
 Import-Module PSReadLine
 Set-PSReadlineOption -TokenKind String -ForegroundColor Cyan
 
+function bash {
+    $argList = @("-l", "-i", "-cur_console:p1", "-new_console:p:n")
+    & "C:\Windows\System32\bash.exe" $argList
+}
+
 # Set up a shortcut to list all active sessions on remote servers I use
 function Show-ActiveSessions {
     $serversXml = [xml](cat '\\nyprodfs01\profiles$\kharper\My Documents\Main Group.rdg')
